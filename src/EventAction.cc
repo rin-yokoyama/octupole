@@ -48,6 +48,7 @@ namespace B1
 
   void EventAction::BeginOfEventAction(const G4Event *)
   {
+    frontSi_ = 0;
     SiMap_.clear();
     CsIMap_.clear();
   }
@@ -66,6 +67,7 @@ namespace B1
     {
       runAction_->AddEdep("CsI", csi.second, csi.first);
     }
+    runAction_->AddEdep("front", frontSi_, 0);
     // delete info;
     //  accumulate statistics in run action
     runAction_->IncrementEvent();
@@ -81,5 +83,10 @@ namespace B1
   void EventAction::AddCsIEdep(const G4double &eDep, G4int copyNum)
   {
     CsIMap_[copyNum] = CsIMap_[copyNum] + eDep;
+  }
+
+  void EventAction::AddFrontEdep(const G4double &eDep)
+  {
+    frontSi_ += eDep;
   }
 }

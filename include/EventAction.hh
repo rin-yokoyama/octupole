@@ -55,8 +55,10 @@ namespace B1
 
     void AddSiEdep(const G4double &eDep, G4int copyNum);
     void AddCsIEdep(const G4double &eDep, G4int copyNum);
+    void AddFrontEdep(const G4double &eDep);
 
   private:
+    double frontSi_;
     std::map<int, double> SiMap_;
     std::map<int, double> CsIMap_;
     std::shared_ptr<RunAction> runAction_;

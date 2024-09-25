@@ -57,7 +57,7 @@ namespace B1
     // inform the runManager to save random number seed
     G4RunManager::GetRunManager()->SetRandomNumberStore(false);
     const u_int64_t nevent = G4RunManager::GetRunManager()->GetNumberOfEventsToBeProcessed();
-    const int nworkers = G4RunManager::GetRunManager()->GetNumberOfThreads();
+    const int nworkers = G4Threading::G4GetNumberOfCores();
     const u_int64_t nevnet_per_worker = nevent / nworkers;
 
     // Initialize Array builders

@@ -144,6 +144,15 @@ namespace B1
     //
     fScoringVolume = siStripLogic;
 
+    // front Si
+    auto SiSolid = new G4Box("Si", 0.5 * B1::kSiSize, 0.5 * B1::kSiSize, 0.5 * B1::kFrontSiThickness);
+    auto SiLogic = new G4LogicalVolume(SiSolid, si_mat, "Si");
+    G4ThreeVector SiPos(B1::kSiXOffset, B1::kSiYOffset + 0.5 * B1::kSiSize, B1::kSiZOffset - 2. * B1::kFrontSiThickness);
+    new G4PVPlacement(nullptr, SiPos, SiLogic, "Si", logicDet, false, 0, checkOverlaps);
+    G4VisAttributes *SiAttributes = new G4VisAttributes();
+    SiAttributes->SetColor(1, 0, 0);
+    SiLogic->SetVisAttributes(SiAttributes);
+
     /// CsI
     auto CsISolid = new G4Box("CsI", 0.5 * B1::kCsISize, 0.5 * B1::kCsISize, 0.5 * B1::kCsIThickness);
     auto CsILogic = new G4LogicalVolume(CsISolid, // its solid
