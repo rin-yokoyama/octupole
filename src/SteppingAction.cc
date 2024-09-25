@@ -76,6 +76,10 @@ namespace B1
     {
       fEventAction->AddCsIEdep(edepStep, copyNum);
     }
+    else if (volume->GetName() == "Si")
+    {
+      fEventAction->AddFrontEdep(edepStep);
+    }
   }
 
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

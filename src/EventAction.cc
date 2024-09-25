@@ -67,7 +67,8 @@ namespace B1
     {
       runAction_->AddEdep("CsI", csi.second, csi.first);
     }
-    runAction_->AddEdep("front", frontSi_, 0);
+    if (frontSi_ > 0)
+      runAction_->AddEdep("front", frontSi_, 0);
     // delete info;
     //  accumulate statistics in run action
     runAction_->IncrementEvent();
